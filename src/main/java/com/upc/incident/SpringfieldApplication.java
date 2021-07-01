@@ -1,15 +1,20 @@
 package com.upc.incident;
 
+import com.upc.incident.config.SwaggerConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 @EnableJpaAuditing
 @Import(SwaggerConfiguration.class)
-public class SpringfieldApplication {
+public class SpringfieldApplication implements WebMvcConfigurer {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringfieldApplication.class, args);
@@ -31,19 +36,5 @@ class RestTemplateConfig {
 	@Bean
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
-	}
-}
-
-@Configuration
-@EnableSwagger2
-public class SwaggerConfiguration {
-
-	@Bean
-	public Docket productApi() {
-		return new Docket(DocumentationType.SWAGGER_2)
-				.select()
-				.apis(RequestHandlerSelectors.basePackage("com.burritogoupc.pe"))
-				.paths(regex("/.*"))
-				.build();
 	}
 }

@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.ArrayList;
 import java.util.List;
 
-@RunWith(SpringRunner.class)
+//@RunWith(SpringRunner.class)
 @SpringBootTest
 public class SpringfieldApplicationTests {
 	@Autowired
@@ -29,9 +29,9 @@ public class SpringfieldApplicationTests {
 	@Autowired
 	private ServicioCategoriaCore servicioCategoriaCore;
 
-//	@Test
-//	public void contextLoads() {
-//	}
+	@Test
+	public void contextLoads() {
+	}
 //
 //	@Test
 //	public void registrarTiposIncidencia(){

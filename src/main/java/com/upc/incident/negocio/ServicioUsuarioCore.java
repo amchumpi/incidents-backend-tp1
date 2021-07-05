@@ -24,12 +24,12 @@ public class ServicioUsuarioCore {
         Usuario u;
         try {
             u = servicioUsuarioDao.registrar(usuario);
-            try {
-                this.enviarMensajeBienvenida(u);
-            }
-            catch (Exception e) {
-                e.printStackTrace();
-            }
+//            try {
+//                this.enviarMensajeBienvenida(u);
+//            }
+//            catch (Exception e) {
+//                e.printStackTrace();
+//            }
         }
         catch (Exception e){
             e.printStackTrace();
@@ -42,7 +42,7 @@ public class ServicioUsuarioCore {
         Usuario u;
         try{
             if(usuario.getTipoDocIdentidad()!=null && usuario.getNroDocIdentidad()!=null)
-                if(usuario.getTipoDocIdentidad().getCodigo()!="" && usuario.getNroDocIdentidad()!="")
+                if(!usuario.getTipoDocIdentidad().getCodigo().equals("") && !usuario.getNroDocIdentidad().equals(""))
                     u=servicioUsuarioDao.modificar(usuario);
                 else
                     throw new Exception("El usuario tiene código 0.)");
@@ -93,7 +93,7 @@ public class ServicioUsuarioCore {
         List<String> listaPara= new ArrayList<>();
         List<String> listaCc= new ArrayList<>();
         List<String> listaBcc= new ArrayList<>();
-        String mensaje="";
+        String mensaje;
         listaPara.add(usuario.getEmail());
 
         mensaje="";

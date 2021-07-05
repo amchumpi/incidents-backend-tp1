@@ -14,12 +14,12 @@ public class ServicioCategoriaRest {
     @Autowired
     private ServicioCategoriaCore servicioCategoriaCore;
 
-    @PostMapping("/tipoDocumentoIdentidad")
+    @PostMapping("/categoria")
     public Categoria registrar(@RequestBody Categoria categoria){
         return servicioCategoriaCore.registrarCategoria(categoria);
     }
 
-    @GetMapping("/tipoDocumentoIdentidad/listar")
+    @GetMapping("/categoria/listar")
     public List<Categoria> listarCategorias(){
         return servicioCategoriaCore.listarCategorias();
     }

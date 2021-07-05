@@ -10,5 +10,8 @@ public interface RepositorioUsuario extends CrudRepository<Usuario,Long> {
     public Usuario validarUsuario(@Param("email") String email,@Param("password") String password);
     @Query("Select u from Usuario u where u.email=:email")
     public Usuario obtenerUsuarioPorEmail(@Param("email") String email);
+    @Query("Select u from Usuario u where u.codigo=:codigo")
+    public Usuario obtenerUsuarioPorCodigo(@Param("codigo") long codigo);
+
 
 }

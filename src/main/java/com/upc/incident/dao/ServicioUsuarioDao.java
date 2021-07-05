@@ -33,4 +33,10 @@ public class ServicioUsuarioDao {
         usuario=repositorioUsuario.obtenerUsuarioPorEmail(email);
         return usuario;
     }
+
+    public Usuario obtenerUsuarioPorCodigo(long codigo) {
+        Usuario usuario;
+        usuario=repositorioUsuario.obtenerUsuarioPorCodigo(codigo);
+        return usuario;
+    }
 }

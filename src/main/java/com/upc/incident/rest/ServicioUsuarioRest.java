@@ -36,4 +36,11 @@ public class ServicioUsuarioRest {
         usuario=servicioUsuarioCore.obtenerUsuarioPorEmail(email);
         return usuario;
     }
+
+    @GetMapping("/usuario/subircategoria/{cod_usuario}")
+    public Usuario SubirCategoria(@PathVariable("cod_usuario") Long cod_usuario){
+        Usuario usuario;
+        usuario=servicioUsuarioCore.upgradeCategoria(cod_usuario);
+        return usuario;
+    }
 }

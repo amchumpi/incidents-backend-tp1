@@ -1,6 +1,7 @@
 package com.upc.incident.negocio;
 
 import com.upc.incident.dao.ServicioUsuarioDao;
+import com.upc.incident.entidades.Categoria;
 import com.upc.incident.entidades.Credenciales;
 import com.upc.incident.entidades.Email;
 import com.upc.incident.entidades.Usuario;
@@ -22,7 +23,20 @@ public class ServicioUsuarioCore {
 
     public Usuario registrarUsuario(Usuario usuario){
         Usuario u;
+        Categoria categoria;
         try {
+            categoria=new Categoria();
+            categoria.setCodigo("01");  //freemium
+            usuario.setCategoria(categoria);
+
+            u=servicioUsuarioDao.obtenerUsuarioPorEmail(usuario.getEmail());
+
+            if(u!=null) {
+                if(u.getCodigo()>0){
+                    throw new Exception("Ya existe una cuenta para el correo " + usuario.getEmail() + ".");
+                }
+            }
+
             u = servicioUsuarioDao.registrar(usuario);
 //            try {
 //                this.enviarMensajeBienvenida(u);
@@ -85,6 +99,32 @@ public class ServicioUsuarioCore {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Error al validar datos de Usuario.\nDetalle: " + e.getMessage());
         }
         return usuario;
+    }
+
+    public Usuario upgradeCategoria(long codUsuario){
+        Usuario u;
+        Categoria categoria;
+        try{
+
+            u=servicioUsuarioDao.obtenerUsuarioPorCodigo(codUsuario);
+
+            if(u==null){
+                throw new Exception("No se encontró al usuario con ID " + codUsuario);
+            }
+
+            if(u.getCategoria().getCodigo().equals("02")){
+                throw  new Exception("El usuario con ID " + codUsuario + " y es PREMIUM.");
+            }
+            categoria= new Categoria();
+            categoria.setCodigo("02"); //premium
+            u.setCategoria(categoria);
+            u=servicioUsuarioDao.modificar(u);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Error al validar datos de Usuario.\nDetalle: " + e.getMessage());
+        }
+        return u;
     }
 
 

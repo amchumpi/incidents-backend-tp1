@@ -130,27 +130,32 @@ public class ServicioUsuarioCore {
 
     private void enviarMensajeBienvenida(Usuario usuario){
         Email email= new Email();
-        List<String> listaPara= new ArrayList<>();
+        ArrayList<String> listaPara= new ArrayList<String>();
         List<String> listaCc= new ArrayList<>();
         List<String> listaBcc= new ArrayList<>();
         String mensaje;
         listaPara.add(usuario.getEmail());
 
         mensaje="";
-        mensaje +="Estimado(a) " + usuario.getNombre().toUpperCase().trim() + " " + usuario.getApellidoPaterno() + " " + usuario.getApellidoMaterno() +".\n";
-        mensaje +="\n";
-        mensaje+="Te damos la bienvenida a la mejor aplicación de reportes contra incidentes. Con nosotros podrás sentirte más seguro vayas donde vayas, con nuestro sistema de prevención contra incidentes.";
-        mensaje+="\n";
-        mensaje+="Tu seguridad es lo más importante, no espere más y aproveche todos las funcionalidades de Report-incidents";
-        mensaje +="Atte.\nEl equipo de Reporte de incidentes";
+        mensaje+="<html><title></title>";
+        mensaje+="<body>";
+        mensaje+="<p>Estimado(a) " + usuario.getNombre().toUpperCase().trim() + " " + usuario.getApellidoPaterno() + " " + usuario.getApellidoMaterno() +".</p><p><br>";
+        mensaje+="</p><p>Te damos la bienvenida a la mejor aplicación de reportes contra incidentes. Con nosotros podrás sentirte más seguro vayas donde vayas, con nuestro sistema de prevención contra incidentes.<br>";
+        mensaje+="Tu seguridad es lo más importante, no espere más y aproveche todos las funcionalidades de Report-incidents</p><p>";
+        mensaje +="<br>";
+        mensaje +="</p><p>Atte.</p><p>";
+        mensaje +="</p><p>El equipo de Reporte de incidentes</p><p>";
+        mensaje+="</p></body>";
+        mensaje+="</html>";
 
-        email.setAsunto("Bienvenido a la aplicación 'Reporteamos Todos!'");
-        email.setPara(listaPara);
+
+        email.setAsunto("Bienvenido a la aplicación 'Report-incidents'");
+        email.setPara(listaPara.toArray(new String[0]));
         email.setCc(listaCc);
         email.setBcc(listaBcc);
         email.setConFormatoHtml(true);
         email.setDe("no-reply@report-incident.com");
-        email.setMensaje(this.normalizarMensajeHtml( mensaje));
+        email.setMensaje(mensaje);
         //servicioUtilitario.enviarCorreo(email);
         servicioUtilitario.sendEmail(email);
 
@@ -160,7 +165,7 @@ public class ServicioUsuarioCore {
         String html="";
         html +="<html><title></title>";
         html +="<body>";
-        html += mensaje.replace("\n","<br>");
+        html += mensaje.replace("\n","<br><br>");
         html +="</body>";
         html +="</html>";
         return html;

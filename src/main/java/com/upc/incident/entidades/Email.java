@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Email {
     private String de;
-    private List<String> para;
+    private String[] para;
     private List<String> cc;
     private List<String> bcc;
     private String asunto;
@@ -19,11 +19,11 @@ public class Email {
         this.de = de;
     }
 
-    public List<String> getPara() {
+    public String[] getPara() {
         return para;
     }
 
-    public void setPara(List<String> para) {
+    public void setPara(String[] para) {
         this.para = para;
     }
 

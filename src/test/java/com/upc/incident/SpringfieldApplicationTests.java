@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.ArrayList;
 import java.util.List;
 
-//@RunWith(SpringRunner.class)
+@RunWith(SpringRunner.class)
 @SpringBootTest
 public class SpringfieldApplicationTests {
 	@Autowired
@@ -91,40 +91,40 @@ public class SpringfieldApplicationTests {
 //		servicioCategoriaCore.registrarCategoria(categoria);
 //	}
 //
-//	@Test
-//	public void registrarUsuario(){
-//		Usuario usuario;
-//		TipoDocumentoIdentidad tipoDocumentoIdentidad;
-//		Categoria categoria= new Categoria();
-//		Rol rol= new Rol();
-//		usuario= new Usuario();
-//		usuario.setNroDocIdentidad("73272624");
-//		usuario.setNombre("Aldo Miguel");
-//		usuario.setApellidoPaterno("Chumpitaz");
-//		usuario.setApellidoMaterno("Pucllas");
-//		tipoDocumentoIdentidad= new TipoDocumentoIdentidad();
-//		tipoDocumentoIdentidad.setCodigo("DNI");
-//		tipoDocumentoIdentidad.setDescripcion("DOCUMENTO NACIONAL DE IDENTIDAD");
-//		usuario.setTipoDocIdentidad(tipoDocumentoIdentidad);
-//		//usuario.setSexo("M");
-//		//usuario.setFechaNacimiento();
-//		//usuario.setDireccion("Av. Petit thouars 3340");
-//		//usuario.setDistrito("San isidro");
-//		//usuario.setProvincia("Lima");
-//		//usuario.setDepartamento("Lima");
-//		usuario.setEmail("aldichumpi@gmail.com");
-//		usuario.setPassword("123456789");
-//		rol.setCodigo("USR");
-//		usuario.setRol(rol);
-//
-//		categoria.setCodigo("01");
-//		usuario.setCategoria(categoria);
-//
-//		Usuario u;
-//		u=servicioUsuarioCore.registrarUsuario(usuario);
-//
-//		Assert.assertNotNull(u);
-//	}
+	@Test
+	public void registrarUsuario(){
+		Usuario usuario;
+		TipoDocumentoIdentidad tipoDocumentoIdentidad;
+		Categoria categoria= new Categoria();
+		Rol rol= new Rol();
+		usuario= new Usuario();
+		usuario.setNroDocIdentidad("73272624");
+		usuario.setNombre("Aldo Miguel");
+		usuario.setApellidoPaterno("Chumpitaz");
+		usuario.setApellidoMaterno("Pucllas");
+		tipoDocumentoIdentidad= new TipoDocumentoIdentidad();
+		tipoDocumentoIdentidad.setCodigo("DNI");
+		tipoDocumentoIdentidad.setDescripcion("DOCUMENTO NACIONAL DE IDENTIDAD");
+		usuario.setTipoDocIdentidad(tipoDocumentoIdentidad);
+		//usuario.setSexo("M");
+		//usuario.setFechaNacimiento();
+		//usuario.setDireccion("Av. Petit thouars 3340");
+		//usuario.setDistrito("San isidro");
+		//usuario.setProvincia("Lima");
+		//usuario.setDepartamento("Lima");
+		usuario.setEmail("aldichumpi@gmail.com");
+		usuario.setPassword("123456789");
+		rol.setCodigo("USR");
+		usuario.setRol(rol);
+
+		categoria.setCodigo("01");
+		usuario.setCategoria(categoria);
+
+		Usuario u;
+		u=servicioUsuarioCore.registrarUsuario(usuario);
+
+		Assert.assertNotNull(u);
+	}
 //
 //    @Test
 //    public void registrarImagen(){

@@ -38,12 +38,12 @@ public class ServicioUsuarioCore {
             }
 
             u = servicioUsuarioDao.registrar(usuario);
-//            try {
-//                this.enviarMensajeBienvenida(u);
-//            }
-//            catch (Exception e) {
-//                e.printStackTrace();
-//            }
+            try {
+                this.enviarMensajeBienvenida(u);
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         catch (Exception e){
             e.printStackTrace();
@@ -137,18 +137,22 @@ public class ServicioUsuarioCore {
         listaPara.add(usuario.getEmail());
 
         mensaje="";
-        mensaje +="Bienvenido(a) " + usuario.getNombre().toUpperCase().trim() + " " + usuario.getApellidoPaterno() + " " + usuario.getApellidoMaterno() +".\n";
+        mensaje +="Estimado(a) " + usuario.getNombre().toUpperCase().trim() + " " + usuario.getApellidoPaterno() + " " + usuario.getApellidoMaterno() +".\n";
         mensaje +="\n";
-        mensaje +="Atte.\nEl equipo de Springfield";
+        mensaje+="Te damos la bienvenida a la mejor aplicación de reportes contra incidentes. Con nosotros podrás sentirte más seguro vayas donde vayas, con nuestro sistema de prevención contra incidentes.";
+        mensaje+="\n";
+        mensaje+="Tu seguridad es lo más importante, no espere más y aproveche todos las funcionalidades de Report-incidents";
+        mensaje +="Atte.\nEl equipo de Reporte de incidentes";
 
         email.setAsunto("Bienvenido a la aplicación 'Reporteamos Todos!'");
         email.setPara(listaPara);
         email.setCc(listaCc);
         email.setBcc(listaBcc);
         email.setConFormatoHtml(true);
-        email.setDe("no-reply@springfield.com");
+        email.setDe("no-reply@report-incident.com");
         email.setMensaje(this.normalizarMensajeHtml( mensaje));
-        servicioUtilitario.enviarCorreo(email);
+        //servicioUtilitario.enviarCorreo(email);
+        servicioUtilitario.sendEmail(email);
 
     }
 

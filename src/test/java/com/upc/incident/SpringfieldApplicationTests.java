@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.ArrayList;
 import java.util.List;
 
-@RunWith(SpringRunner.class)
+//@RunWith(SpringRunner.class)
 @SpringBootTest
 public class SpringfieldApplicationTests {
 	@Autowired
@@ -91,7 +91,7 @@ public class SpringfieldApplicationTests {
 //		servicioCategoriaCore.registrarCategoria(categoria);
 //	}
 //
-	@Test
+/*	@Test
 	public void registrarUsuario(){
 		Usuario usuario;
 		TipoDocumentoIdentidad tipoDocumentoIdentidad;
@@ -124,7 +124,7 @@ public class SpringfieldApplicationTests {
 		u=servicioUsuarioCore.registrarUsuario(usuario);
 
 		Assert.assertNotNull(u);
-	}
+	}*/
 //
 //    @Test
 //    public void registrarImagen(){

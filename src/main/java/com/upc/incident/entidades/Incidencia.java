@@ -30,6 +30,10 @@ public class Incidencia implements Serializable {
     private List<ComentarioIncidencia> comentarios;
     @OneToMany(mappedBy="incidencia", cascade = CascadeType.ALL,fetch=FetchType.LAZY)
     private List<Imagen> imagenes;
+    private Double latitud;
+    private Double longitud;
+    private Date fecha;
+    private Date fechaModificacion;
 
     public Long getCodigo() {
         return codigo;
@@ -124,6 +128,37 @@ public class Incidencia implements Serializable {
         this.imagenes = imagenes;
     }
 
+    public Double getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(Double latitud) {
+        this.latitud = latitud;
+    }
+
+    public Double getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(Double longitud) {
+        this.longitud = longitud;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+    public Date getFechaModificacion() {
+        return fechaModificacion;
+    }
+
+    public void setFechaModificacion(Date fechaModificacion) {
+        this.fechaModificacion = fechaModificacion;
+    }
+
     public Incidencia() {
         this.codigo = Long.parseLong("0");
         this.tipo = new TipoIncidencia();
@@ -137,5 +172,9 @@ public class Incidencia implements Serializable {
         this.usuario = new Usuario();
         this.comentarios = new ArrayList<>();
         this.imagenes = new ArrayList<>();
+        this.longitud =0.00;
+        this.latitud=0.00;
+        this.fecha=null;
+        this.fechaModificacion=null;
     }
 }

@@ -13,11 +13,13 @@ public class IncidenciaEntity implements Serializable {
     private String distrito;
     private String provincia;
     private String pais;
-    private Date fechaCreacion;
     private String estado;
     private Usuario usuario;
     private List<ComentarioIncidencia> comentarios;
     private List<ImagenEntity> imagenes;
+    private Double latitud;
+    private Double longitud;
+    private Date fecha;
 
     public Long getCodigo() {
         return codigo;
@@ -75,14 +77,6 @@ public class IncidenciaEntity implements Serializable {
         this.pais = pais;
     }
 
-    public Date getFechaCreacion() {
-        return fechaCreacion;
-    }
-
-    public void setFechaCreacion(Date fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
-    }
-
     public String getEstado() {
         return estado;
     }
@@ -113,5 +107,29 @@ public class IncidenciaEntity implements Serializable {
 
     public void setImagenes(List<ImagenEntity> imagenes) {
         this.imagenes = imagenes;
+    }
+
+    public Double getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(Double latitud) {
+        this.latitud = latitud;
+    }
+
+    public Double getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(Double longitud) {
+        this.longitud = longitud;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 }

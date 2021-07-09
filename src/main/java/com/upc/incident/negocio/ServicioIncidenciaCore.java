@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -21,6 +22,7 @@ public class ServicioIncidenciaCore {
     public Incidencia registrarIncidencia(Incidencia incidencia){
         Incidencia i;
         try{
+            incidencia.setFechaCreacion(new Date());
             i=servicioIncidenciaDao.registrar(incidencia);
         }
         catch (Exception e){
@@ -34,8 +36,10 @@ public class ServicioIncidenciaCore {
         Incidencia i;
         try{
             if(incidencia.getCodigo()!=null)
-                if(incidencia.getCodigo()!=0)
-                    i=servicioIncidenciaDao.modificar(incidencia);
+                if(incidencia.getCodigo()!=0) {
+                    incidencia.setFechaModificacion(new Date());
+                    i = servicioIncidenciaDao.modificar(incidencia);
+                }
                 else
                     throw new Exception("La incidencia tiene código 0.)");
             else
@@ -79,7 +83,6 @@ public class ServicioIncidenciaCore {
                 incEntity.setDireccion(inc.getDireccion());
                 incEntity.setDistrito(inc.getDistrito());
                 incEntity.setEstado(inc.getEstado());
-                incEntity.setFechaCreacion(inc.getFechaCreacion());
                 incEntity.setPais(inc.getPais());
                 incEntity.setProvincia(inc.getPais());
                 incEntity.setTipo(inc.getTipo());
@@ -95,6 +98,9 @@ public class ServicioIncidenciaCore {
                 }
                 incEntity.setImagenes(listaImgEntity);
                 //incEntity.setUsuario();
+                incEntity.setLatitud(inc.getLatitud());
+                incEntity.setLongitud(inc.getLongitud());
+                incEntity.setFecha(inc.getFecha());
                 listaIncidencia.add(incEntity);
             }
         }
@@ -120,7 +126,6 @@ public class ServicioIncidenciaCore {
             incidenciaEntity.setDireccion(incidencia.getDireccion());
             incidenciaEntity.setDistrito(incidencia.getDistrito());
             incidenciaEntity.setEstado(incidencia.getEstado());
-            incidenciaEntity.setFechaCreacion(incidencia.getFechaCreacion());
             incidenciaEntity.setPais(incidencia.getPais());
             incidenciaEntity.setProvincia(incidencia.getPais());
             incidenciaEntity.setTipo(incidencia.getTipo());
@@ -134,6 +139,9 @@ public class ServicioIncidenciaCore {
                 listaImgEntity.add(imgEntity);
             }
             incidenciaEntity.setImagenes(listaImgEntity);
+            incidenciaEntity.setLatitud(incidencia.getLatitud());
+            incidenciaEntity.setLongitud(incidencia.getLongitud());
+            incidenciaEntity.setFecha(incidencia.getFecha());
         }
         catch (Exception e){
             e.printStackTrace();

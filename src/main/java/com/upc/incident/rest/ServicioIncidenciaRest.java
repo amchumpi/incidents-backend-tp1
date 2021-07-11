@@ -45,4 +45,9 @@ public class ServicioIncidenciaRest {
         return servicioIncidenciaCore.obtenerIncidenciaPorId(id);
     }
 
+    @GetMapping("/incidencia/listarPorUbicacionYDistancia")
+    public List<IncidenciaEntity> listarPorUbicacionYDistancia(Double latitud, Double longitud,int distancia){
+        return servicioIncidenciaCore.listarIncidenciasPorUbicacionYDistancia(latitud,longitud,distancia);
+    }
+
 }

@@ -40,4 +40,10 @@ public class ServicioIncidenciaDao {
         incidencia=repositorioIncidencia.obtenerIncidenciasPorId(id);
         return incidencia;
     }
+
+    public List<Incidencia> listarIncidenciasPorUbicacionYDistancia(Double latitud, Double longitud, Double distancia){
+        List<Incidencia> listaIncidencia=new ArrayList<>();
+        listaIncidencia= repositorioIncidencia.obtenerIncidenciasPorUbicacionYDistancia(latitud,longitud,distancia);
+        return listaIncidencia;
+    }
 }

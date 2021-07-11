@@ -149,4 +149,51 @@ public class ServicioIncidenciaCore {
         }
         return incidenciaEntity;
     }
+
+    public List<IncidenciaEntity> listarIncidenciasPorUbicacionYDistancia(Double latitud, Double longitud, Double distancia){
+        List<Incidencia> lista= new ArrayList<>();
+        List<IncidenciaEntity> listaIncidencia=new ArrayList<>();
+        IncidenciaEntity incEntity=null;
+        ImagenEntity imgEntity=null;
+        List<ImagenEntity> listaImgEntity= new ArrayList<>();
+        byte[] file=null;
+        int lng;
+        try{
+            lista=servicioIncidenciaDao.listarIncidenciasPorUbicacionYDistancia(latitud,longitud,distancia);
+
+            for(Incidencia inc:lista){
+                incEntity= new IncidenciaEntity();
+                incEntity.setCodigo(inc.getCodigo());
+                incEntity.setComentarios(inc.getComentarios());
+                incEntity.setDescripcion(inc.getDescripcion());
+                incEntity.setDireccion(inc.getDireccion());
+                incEntity.setDistrito(inc.getDistrito());
+                incEntity.setEstado(inc.getEstado());
+                incEntity.setPais(inc.getPais());
+                incEntity.setProvincia(inc.getPais());
+                incEntity.setTipo(inc.getTipo());
+                listaImgEntity= new ArrayList<>();
+                for(Imagen img:inc.getImagenes()){
+                    imgEntity= new ImagenEntity();
+                    imgEntity.setCodigo(img.getCodigo());
+                    //imgEntity.setIncidencia();
+                    lng=(int)img.getArchivo().length();
+                    file=img.getArchivo().getBytes(1,lng);
+                    imgEntity.setArchivo(file);
+                    listaImgEntity.add(imgEntity);
+                }
+                incEntity.setImagenes(listaImgEntity);
+                //incEntity.setUsuario();
+                incEntity.setLatitud(inc.getLatitud());
+                incEntity.setLongitud(inc.getLongitud());
+                incEntity.setFecha(inc.getFecha());
+                listaIncidencia.add(incEntity);
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Error al listar Incidencias por ubicación y distancia.\nDetalle: " + e.getMessage());
+        }
+        return listaIncidencia;
+    }
 }

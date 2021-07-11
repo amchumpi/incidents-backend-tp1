@@ -150,7 +150,7 @@ public class ServicioIncidenciaCore {
         return incidenciaEntity;
     }
 
-    public List<IncidenciaEntity> listarIncidenciasPorUbicacionYDistancia(Double latitud, Double longitud, Double distancia){
+    public List<IncidenciaEntity> listarIncidenciasPorUbicacionYDistancia(Double latitud, Double longitud, int distancia){
         List<Incidencia> lista= new ArrayList<>();
         List<IncidenciaEntity> listaIncidencia=new ArrayList<>();
         IncidenciaEntity incEntity=null;

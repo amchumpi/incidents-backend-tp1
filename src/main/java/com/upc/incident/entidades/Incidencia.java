@@ -28,7 +28,7 @@ public class Incidencia implements Serializable {
     private Usuario usuario;
     @OneToMany(mappedBy="incidencia", cascade = CascadeType.ALL,fetch=FetchType.LAZY)
     private List<ComentarioIncidencia> comentarios;
-    @OneToMany(mappedBy="incidencia", cascade = CascadeType.ALL,fetch=FetchType.LAZY)
+    @OneToMany(mappedBy="incidencia", cascade = CascadeType.ALL,fetch=FetchType.EAGER)
     private List<Imagen> imagenes;
     private Double latitud;
     private Double longitud;

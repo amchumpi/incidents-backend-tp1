@@ -28,6 +28,8 @@ public class SpringfieldApplicationTests {
 	private ServicioTipoDocumentoIdentidadCore servicioTipoDocumentoIdentidadCore;
 	@Autowired
 	private ServicioCategoriaCore servicioCategoriaCore;
+	@Autowired
+	private ServicioIncidenciaCore servicioIncidenciaCore;
 
 	@Test
 	public void contextLoads() {
@@ -151,4 +153,16 @@ public class SpringfieldApplicationTests {
 //	    usuario= servicioUsuarioCore.validarUsuario(credenciales);
 //	    Assert.assertNotNull(usuario);
 //    }
+
+//	@Test
+//	public void listarIncidenciasCercanas(){
+//		List<IncidenciaEntity> lista=new ArrayList<>();
+//
+//		Double latitud=-12.068831191891677;
+//		Double longitud=-77.07789728171873;
+//		int distancia=500;
+//
+//		lista=servicioIncidenciaCore.listarIncidenciasPorUbicacionYDistancia(latitud,longitud,distancia);
+//		Assert.assertNotNull(lista);
+//	}
 }

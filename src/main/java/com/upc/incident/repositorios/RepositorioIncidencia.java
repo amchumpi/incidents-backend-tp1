@@ -13,6 +13,6 @@ public interface RepositorioIncidencia extends CrudRepository<Incidencia,Long> {
     public List<Incidencia> listarIncidenciasPorUsuario(@Param(value = "usuario") Long usuario);
     @Query("select i from Incidencia i where i.codigo=:codincidencia")
     public Incidencia obtenerIncidenciasPorId(@Param(value = "codincidencia") Long codincidencia);
-    @Query("select i from Incidencia i where ( 6378137 * 2 * atan2(sqrt(sin(radians(:lat - i.latitud) / 2) * sin(radians(:lat - i.latitud) / 2)+cos(radians(i.latitud))*cos(radians((:lat)))* sin(radians(:lon - i.longitud) / 2)* sin(radians(:lon - i.longitud) / 2)), sqrt(1 - sin(radians(:lat - i.latitud) / 2) * sin(radians(:lat - i.latitud) / 2)+cos(radians(i.latitud))*cos(radians(:lat))* sin(radians(:lon - i.longitud) / 2)* sin(radians(:lon - i.longitud) / 2))))<=:d LIMIT 0 , 50")
-    public List<Incidencia> obtenerIncidenciasPorUbicacionYDistancia(@Param(value = "lat")Double lat,@Param(value = "lon") Double lon,@Param(value = "d") Double d);
+    @Query("select i from Incidencia i where ( 6378137 * 2 * atan2(sqrt(sin(radians(:lat - i.latitud) / 2) * sin(radians(:lat - i.latitud) / 2)+cos(radians(i.latitud))*cos(radians((:lat)))* sin(radians(:lon - i.longitud) / 2)* sin(radians(:lon - i.longitud) / 2)), sqrt(1 - sin(radians(:lat - i.latitud) / 2) * sin(radians(:lat - i.latitud) / 2)+cos(radians(i.latitud))*cos(radians(:lat))* sin(radians(:lon - i.longitud) / 2)* sin(radians(:lon - i.longitud) / 2))))<=:d")
+    public List<Incidencia> obtenerIncidenciasPorUbicacionYDistancia(@Param(value = "lat")Double lat,@Param(value = "lon") Double lon,@Param(value = "d") int d);
 }

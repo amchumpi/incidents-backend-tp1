@@ -4,6 +4,7 @@ import com.upc.incident.entidades.Incidencia;
 import com.upc.incident.repositorios.RepositorioIncidencia;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +42,7 @@ public class ServicioIncidenciaDao {
         return incidencia;
     }
 
-    public List<Incidencia> listarIncidenciasPorUbicacionYDistancia(Double latitud, Double longitud, Double distancia){
+    public List<Incidencia> listarIncidenciasPorUbicacionYDistancia(Double latitud, Double longitud, int distancia){
         List<Incidencia> listaIncidencia=new ArrayList<>();
         listaIncidencia= repositorioIncidencia.obtenerIncidenciasPorUbicacionYDistancia(latitud,longitud,distancia);
         return listaIncidencia;
